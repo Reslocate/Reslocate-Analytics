@@ -7,6 +7,10 @@ import { TVET } from './pages/TVET'
 import { Matches } from './pages/Matches'
 import { Funding } from './pages/Funding'
 import { Institutions } from './pages/Institutions'
+import { SessionHealth } from './pages/SessionHealth'
+import { Engagement } from './pages/Engagement'
+import { UserJourney } from './pages/UserJourney'
+import { FeatureAdoption } from './pages/FeatureAdoption'
 
 function App() {
   const [currentPage, setCurrentPage] = useState('overview')
@@ -25,6 +29,14 @@ function App() {
         return <Funding />
       case 'institutions':
         return <Institutions />
+      case 'session-health':
+        return <SessionHealth />
+      case 'engagement':
+        return <Engagement />
+      case 'user-journey':
+        return <UserJourney />
+      case 'feature-adoption':
+        return <FeatureAdoption />
       default:
         return <Overview />
     }

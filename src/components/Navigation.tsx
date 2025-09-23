@@ -6,6 +6,10 @@ import {
   Users, 
   DollarSign, 
   MapPin,
+  Activity,
+  MousePointer,
+  GitBranch,
+  Target,
   Menu,
   X
 } from 'lucide-react'
@@ -25,6 +29,10 @@ export function Navigation({ currentPage = 'overview', onNavigate }: NavigationP
     { id: 'matches', label: 'Student Matches', icon: Users },
     { id: 'funding', label: 'Funding', icon: DollarSign },
     { id: 'institutions', label: 'Institutions', icon: MapPin },
+    { id: 'session-health', label: 'Session Health', icon: Activity },
+    { id: 'engagement', label: 'Engagement', icon: MousePointer },
+    { id: 'user-journey', label: 'User Journey', icon: GitBranch },
+    { id: 'feature-adoption', label: 'Feature Adoption', icon: Target },
   ]
 
   const handleNavigation = (page: string) => {
