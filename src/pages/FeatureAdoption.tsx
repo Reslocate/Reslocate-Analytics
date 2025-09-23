@@ -169,8 +169,14 @@ export function FeatureAdoption() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Feature Adoption & Retention</h1>
-        <p className="text-gray-600">Monitor user retention, feature adoption, and cohort performance</p>
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent mb-3">
+            Feature Adoption & Retention
+          </h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Monitor user retention, feature adoption, and cohort performance to drive growth
+          </p>
+        </div>
       </div>
 
       <div className="flex space-x-4 mb-6">

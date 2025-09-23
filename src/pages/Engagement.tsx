@@ -133,27 +133,33 @@ export function Engagement() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Engagement by Page & Clicks</h1>
-        <p className="text-gray-600">Analyze page performance, user engagement, and click-through rates</p>
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent mb-3">
+            Engagement by Page & Clicks
+          </h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Analyze page performance, user engagement, and click-through rates across your platform
+          </p>
+        </div>
       </div>
 
-      <div className="flex space-x-4 mb-6">
+      <div className="flex justify-center space-x-4 mb-8">
         <button
           onClick={() => setTimeRange('7d')}
-          className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+          className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:scale-105 ${
             timeRange === '7d'
-              ? 'bg-green-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              ? 'bg-gradient-to-r from-green-600 to-green-700 text-white shadow-lg'
+              : 'bg-white text-gray-700 hover:bg-gray-50 shadow-md border border-gray-200'
           }`}
         >
           Last 7 Days
         </button>
         <button
           onClick={() => setTimeRange('30d')}
-          className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+          className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:scale-105 ${
             timeRange === '30d'
-              ? 'bg-green-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              ? 'bg-gradient-to-r from-green-600 to-green-700 text-white shadow-lg'
+              : 'bg-white text-gray-700 hover:bg-gray-50 shadow-md border border-gray-200'
           }`}
         >
           Last 30 Days

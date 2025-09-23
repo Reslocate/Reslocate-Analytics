@@ -134,8 +134,14 @@ export function SessionHealth() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Session Health Overview</h1>
-        <p className="text-gray-600">Monitor active sessions, performance metrics, and system health</p>
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent mb-3">
+            Session Health Overview
+          </h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Monitor active sessions, performance metrics, and system health in real-time
+          </p>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -172,67 +178,73 @@ export function SessionHealth() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Daily Sessions by Status (Last 30 Days)</h2>
+        <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-shadow duration-300">
+          <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+            <Activity className="h-5 w-5 mr-2 text-green-600" />
+            Daily Sessions by Status (Last 30 Days)
+          </h2>
           <div className="space-y-3">
             {dailyData.slice(-7).map((day, index) => {
               const total = day.completed + day.active + day.disconnected + day.crashed
               return (
                 <div key={day.date} className="flex items-center space-x-4">
-                  <div className="w-16 text-sm text-gray-600">
+                  <div className="w-16 text-sm font-medium text-gray-700">
                     {new Date(day.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                   </div>
                   <div className="flex-1">
-                    <div className="flex h-6 rounded-lg overflow-hidden">
+                    <div className="flex h-6 rounded-lg overflow-hidden shadow-inner">
                       <div 
-                        className="bg-green-500" 
+                        className="bg-gradient-to-r from-green-400 to-green-500" 
                         style={{ width: `${(day.completed / total) * 100}%` }}
                         title={`Completed: ${day.completed}`}
                       />
                       <div 
-                        className="bg-blue-500" 
+                        className="bg-gradient-to-r from-blue-400 to-blue-500" 
                         style={{ width: `${(day.active / total) * 100}%` }}
                         title={`Active: ${day.active}`}
                       />
                       <div 
-                        className="bg-yellow-500" 
+                        className="bg-gradient-to-r from-yellow-400 to-yellow-500" 
                         style={{ width: `${(day.disconnected / total) * 100}%` }}
                         title={`Disconnected: ${day.disconnected}`}
                       />
                       <div 
-                        className="bg-red-500" 
+                        className="bg-gradient-to-r from-red-400 to-red-500" 
                         style={{ width: `${(day.crashed / total) * 100}%` }}
                         title={`Crashed: ${day.crashed}`}
                       />
                     </div>
                   </div>
-                  <div className="w-12 text-sm text-gray-600 text-right">{total}</div>
+                  <div className="w-12 text-sm font-semibold text-gray-700 text-right">{total}</div>
                 </div>
               )
             })}
           </div>
-          <div className="flex items-center justify-center space-x-6 mt-4 text-sm">
+          <div className="flex items-center justify-center space-x-6 mt-6 text-sm font-medium">
             <div className="flex items-center">
-              <div className="w-3 h-3 bg-green-500 rounded mr-2"></div>
+              <div className="w-3 h-3 bg-gradient-to-r from-green-400 to-green-500 rounded mr-2 shadow-sm"></div>
               Completed
             </div>
             <div className="flex items-center">
-              <div className="w-3 h-3 bg-blue-500 rounded mr-2"></div>
+              <div className="w-3 h-3 bg-gradient-to-r from-blue-400 to-blue-500 rounded mr-2 shadow-sm"></div>
               Active
             </div>
             <div className="flex items-center">
-              <div className="w-3 h-3 bg-yellow-500 rounded mr-2"></div>
+              <div className="w-3 h-3 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded mr-2 shadow-sm"></div>
               Disconnected
             </div>
             <div className="flex items-center">
-              <div className="w-3 h-3 bg-red-500 rounded mr-2"></div>
+              <div className="w-3 h-3 bg-gradient-to-r from-red-400 to-red-500 rounded mr-2 shadow-sm"></div>
               Crashed
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Session Duration Distribution (Last 7 Days)</h2>
+        <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-shadow duration-300">
+          <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+            <Clock className="h-5 w-5 mr-2 text-green-600" />
+            Session Duration Distribution (Last 7 Days)
+          </h2>
           <div className="space-y-3">
             {[
               { range: '0-5 min', count: 234, percentage: 15 },
@@ -242,16 +254,16 @@ export function SessionHealth() {
               { range: '60+ min', count: 89, percentage: 5 }
             ].map((bucket) => (
               <div key={bucket.range} className="flex items-center space-x-4">
-                <div className="w-20 text-sm text-gray-600">{bucket.range}</div>
+                <div className="w-20 text-sm font-medium text-gray-700">{bucket.range}</div>
                 <div className="flex-1">
-                  <div className="bg-gray-200 rounded-full h-4">
+                  <div className="bg-gray-200 rounded-full h-4 shadow-inner">
                     <div
-                      className="bg-green-600 h-4 rounded-full transition-all duration-500"
+                      className="bg-gradient-to-r from-green-500 to-green-600 h-4 rounded-full transition-all duration-500 shadow-sm"
                       style={{ width: `${bucket.percentage}%` }}
                     />
                   </div>
                 </div>
-                <div className="w-16 text-sm text-gray-600 text-right">{bucket.count}</div>
+                <div className="w-16 text-sm font-semibold text-gray-700 text-right">{bucket.count}</div>
               </div>
             ))}
           </div>
